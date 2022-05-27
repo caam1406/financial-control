@@ -19,7 +19,13 @@ export const Summary = () => {
         image={outcome}
         alt="Outcome Money"
       />
-      <SummaryComponent title="Total" value={500.0} image={total} alt="Total" />
+      <SummaryComponent
+        title="Total"
+        value={500.0}
+        image={total}
+        alt="Total"
+        className="secundaryBackground"
+      />
     </Container>
   );
 };
