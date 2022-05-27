@@ -1,4 +1,5 @@
 import { Summary } from "../summary";
+import { Transactions } from "../transactions";
 import { Container } from "./styled";
 
 export const Dashboard = () => {
@@ -6,6 +7,7 @@ export const Dashboard = () => {
     <>
       <Container>
         <Summary />
+        <Transactions />
       </Container>
     </>
   );
