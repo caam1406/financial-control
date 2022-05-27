@@ -7,7 +7,7 @@ export const GlobalStyle = createGlobalStyle`
     --color-primary: #004d40;
     --green-light: #39796b;
     --green-dark: #01251A;
-    --text-tile: #ffffff;
+    --text-title: #ffffff;
 }
 html {
     @media (max-width: 1080px){
