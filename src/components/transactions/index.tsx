@@ -1,6 +1,12 @@
+import React from "react";
 import { Container } from "./styled";
 
 export const Transactions = () => {
+  React.useEffect(() => {
+    fetch("http://localhost:3000/api/transactions")
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+  }, []);
   return (
     <Container>
       <table>
