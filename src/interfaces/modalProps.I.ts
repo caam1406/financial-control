@@ -1,4 +1,4 @@
-export interface IModal {
+export interface IModalProps {
   open: boolean;
   setOpen: () => void;
 }
