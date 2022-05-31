@@ -1,20 +1,17 @@
-import React from "react";
 import Modal from "react-modal";
-import { IModal } from "../../../interfaces/modal.I";
+import { IModalProps } from "../interfaces/modalProps.I";
 
-export const ModalComponent = (props: IModal) => {
+export const ModalComponent = (props: IModalProps) => {
   function afterOpenModal() {
     // references are now sync'd and can be accessed.
     //  subtitle.style.color = "#f00";
   }
-  React.useEffect(() => {
-    Modal.setAppElement("body"); //Fix "Warning: react-modal: App element is not defined"
-  }, []);
+  Modal.setAppElement("#root"); //Fix "Warning: react-modal: App element is not defined"
   return (
     <Modal
       isOpen={props.open}
       onAfterOpen={afterOpenModal}
-      //onRequestClose={handleCloseModal}
+      onRequestClose={props.setOpen}
       //style={customStyles}
       contentLabel="Example Modal"
     >

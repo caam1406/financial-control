@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "../../assets/logo.svg";
-import { ModalComponent } from "./modal";
+import { ModalComponent } from "../../modal";
 import { Container, Content } from "./styled";
 
 export const Header = () => {
