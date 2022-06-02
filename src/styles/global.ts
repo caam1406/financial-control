@@ -4,6 +4,7 @@ export const GlobalStyle = createGlobalStyle`
 :root {
     --background-primary: #E1E2E1;
     --background-secundary: #F5F5F6;
+    --background-over-income: #1b5e20;
     --color-primary: #004d40;
     --green-light: #39796b;
     --green-dark: #01251A;
@@ -56,7 +57,7 @@ h1, h2, h3, h4, h5, h6, strong {
 .modal-content {
     width: 100%;
     max-width: 576px;
-    background: var(--background-secundary);
+     background: var(--background-secundary);
     padding: 3rem;
     position: relative;
     border-radius: 0.24rem;

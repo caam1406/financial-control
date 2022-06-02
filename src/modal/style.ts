@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { IFakeRadioBox } from "../interfaces/fakeRadioBox.I";
 
 export const Container = styled.form`
   h1 {
@@ -48,5 +49,44 @@ export const Container = styled.form`
     &:hover {
       filter: brightness(0.5);
     }
+  }
+`;
+export const TransactionsType = styled.div`
+  margin: 1rem 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+`;
+
+export const FakeRadioBox = styled.button<IFakeRadioBox>`
+  height: 4rem;
+  border: 1px solid var(--green-dark);
+  border-radius: 0.25rem;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 2ms;
+  &:hover {
+    border-color: var(--green-light);
+    border: 2px solid;
+  }
+
+  img {
+    width: 20px;
+    height: 20px;
+  }
+  span {
+    display: inline-block;
+    margin-left: 1rem;
+    font-size: 1rem;
+    color: var(--green-dark);
+  }
+
+  .selectedDeposit {
+    border-color: var(--green-light);
+    background: var(--green-dark);
+  }
+  .selectedWithdraw {
   }
 `;
