@@ -60,9 +60,10 @@ export const TransactionsType = styled.div`
 
 export const FakeRadioBox = styled.button<IFakeRadioBox>`
   height: 4rem;
+  font-weight: 600;
   border: 1px solid var(--green-dark);
   border-radius: 0.25rem;
-  background: transparent;
+  background: ${(props) => props.isActive && "var(--background-selected)"};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -80,13 +81,7 @@ export const FakeRadioBox = styled.button<IFakeRadioBox>`
     display: inline-block;
     margin-left: 1rem;
     font-size: 1rem;
-    color: var(--green-dark);
-  }
-
-  .selectedDeposit {
-    border-color: var(--green-light);
-    background: var(--green-dark);
-  }
-  .selectedWithdraw {
+    color: ${(props) =>
+      props.isActive ? "var(--text-title)" : "var(--green-dark)"};
   }
 `;
