@@ -8,6 +8,7 @@ export const GlobalStyle = createGlobalStyle`
     --color-primary: #004d40;
     --green-light: #39796b;
     --green-dark: #01251A;
+    --red-light: #E62E4D;
     --text-title: #ffffff;
 }
 html {
