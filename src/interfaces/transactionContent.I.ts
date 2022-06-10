@@ -1,8 +1,8 @@
-export interface ITransactioContent {
+export interface ITransactionContent {
   id: number;
   title: string;
   type: string;
   category: string;
   amount: number;
-  createdAt: Date;
+  createdAt: string;
 }
