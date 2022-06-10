@@ -18,11 +18,16 @@ export const Container = styled.div`
       padding: 1rem 2rem;
       border: 0;
       background: var(--background-secundary);
-      color: var(--green-dark);
       border-radius: 0.25rem;
       &:first-child {
         color: var(--green-light);
       }
+    }
+    .deposit {
+      color: var(--green-light);
+    }
+    .withdraw {
+      color: var(--red-light);
     }
   }
 `;
