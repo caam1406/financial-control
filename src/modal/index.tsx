@@ -5,26 +5,51 @@ import close from "../assets/close.svg";
 import income from "../assets/income.svg";
 import outcome from "../assets/outcome.svg";
 import React from "react";
+import { api } from "../services";
 
 export const ModalComponent = (props: IModalProps) => {
   const [howIsSelected, setHowIsSelected] = React.useState("deposit");
-  function afterOpenModal() {}
+  const [form, setForm] = React.useState({
+    title: "",
+    typeofTransaction: "",
+    category: "",
+    value: "",
+  });
   Modal.setAppElement("#root"); //Fix "Warning: react-modal: App element is not defined"
+
+  const handleCreateTransaction = (e: React.FormEvent) => {
+    e.preventDefault();
+    const rawData = {
+      title: form.title,
+      typeofTransaction: howIsSelected,
+      category: form.category,
+      value: form.value,
+    };
+    api.post("/transactions", rawData);
+  };
   return (
     <Modal
       isOpen={props.open}
-      onAfterOpen={afterOpenModal}
       onRequestClose={props.setOpen}
       overlayClassName="modal-overlay"
       className="modal-content"
     >
-      <Container>
+      <Container onSubmit={handleCreateTransaction}>
         <button className="closeButton" onClick={props.setOpen}>
           <img src={close} alt="close" />
         </button>
         <h1>ADD TRANSACTION</h1>
-        <input placeholder="Title" />
-        <input placeholder="Value" type="number" />
+        <input
+          placeholder="Title"
+          value={form.title}
+          onChange={(e) => setForm({ ...form, title: e.target.value })}
+        />
+        <input
+          placeholder="Value"
+          type="number"
+          value={form.value}
+          onChange={(e) => setForm({ ...form, value: e.target.value })}
+        />
         <TransactionsType>
           <FakeRadioBox
             type="button"
@@ -43,7 +68,11 @@ export const ModalComponent = (props: IModalProps) => {
             <span>withdraw</span>
           </FakeRadioBox>
         </TransactionsType>
-        <input placeholder="Category" />
+        <input
+          placeholder="Category"
+          value={form.category}
+          onChange={(e) => setForm({ ...form, category: e.target.value })}
+        />
         <button type="submit">CREATE</button>
       </Container>
     </Modal>
