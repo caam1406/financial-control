@@ -26,6 +26,15 @@ export const ModalComponent = (props: IModalProps) => {
       value: form.value,
     };
     api.post("/transactions", rawData);
+    // Clear the modal
+    setForm({
+      title: "",
+      typeofTransaction: "",
+      category: "",
+      value: "",
+    });
+    // Close the Modal
+    props.setOpen();
   };
   return (
     <Modal
