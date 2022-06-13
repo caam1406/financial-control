@@ -6,9 +6,11 @@ import income from "../assets/income.svg";
 import outcome from "../assets/outcome.svg";
 import React from "react";
 import { api } from "../services";
+import { SharedState } from "../context/transactionContext";
 
 export const ModalComponent = (props: IModalProps) => {
   const [howIsSelected, setHowIsSelected] = React.useState("deposit");
+  const { transactions, setTransactions } = SharedState();
   const [form, setForm] = React.useState({
     title: "",
     typeofTransaction: "",
@@ -17,7 +19,7 @@ export const ModalComponent = (props: IModalProps) => {
   });
   Modal.setAppElement("#root"); //Fix "Warning: react-modal: App element is not defined"
 
-  const handleCreateTransaction = (e: React.FormEvent) => {
+  const handleCreateTransaction = async (e: React.FormEvent) => {
     e.preventDefault();
     const rawData = {
       title: form.title,
@@ -25,7 +27,8 @@ export const ModalComponent = (props: IModalProps) => {
       category: form.category,
       value: form.value,
     };
-    api.post("/transactions", rawData);
+    const trans = await api.post("/transactions", rawData);
+    trans && setTransactions([...transactions, trans.data.transaction]);
     // Clear the modal
     setForm({
       title: "",
