@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { App } from "./App";
+import { UseSharedTransaction } from "./context/transactionContext";
 import { serverMock } from "./http/mock/server";
 import { GlobalStyle } from "./styles/global";
 
@@ -11,7 +12,9 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <UseSharedTransaction>
+      <App />
+    </UseSharedTransaction>
     <GlobalStyle />
   </React.StrictMode>
 );
