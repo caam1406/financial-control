@@ -1,5 +1,6 @@
 import React from "react";
 import { ITransactionsContext } from "../interfaces/transactionsContext.I";
+import { api } from "../services";
 
 const TransactionContext = React.createContext<ITransactionsContext>({
   transactions: [],
@@ -12,6 +13,11 @@ export const UseSharedTransaction = ({
   children: React.ReactNode;
 }) => {
   const [transactions, setTransactions] = React.useState([]);
+  React.useEffect(() => {
+    api
+      .get("transactions")
+      .then((res) => setTransactions(res.data.transactions));
+  }, []);
   return (
     <TransactionContext.Provider value={{ transactions, setTransactions }}>
       {children}
