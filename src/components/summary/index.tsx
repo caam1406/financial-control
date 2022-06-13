@@ -7,23 +7,35 @@ import { SharedState } from "../../context/transactionContext";
 
 export const Summary = () => {
   const { transactions } = SharedState();
+  const totalDeposit = transactions.reduce((acc, curr) => {
+    if (curr.type === "deposit") {
+      return acc + curr.amount;
+    }
+    return acc;
+  }, 0);
+  const totalWithdraw = transactions.reduce((acc, curr) => {
+    if (curr.type === "withdraw") {
+      return acc + curr.amount;
+    }
+    return acc;
+  }, 0);
   return (
     <Container>
       <SummaryComponent
         title="Income"
-        value={1000.0}
+        value={totalDeposit}
         image={income}
         alt="Income Money"
       />
       <SummaryComponent
         title="Outcome"
-        value={500.0}
+        value={totalWithdraw}
         image={outcome}
         alt="Outcome Money"
       />
       <SummaryComponent
         title="Total"
-        value={500.0}
+        value={totalDeposit - totalWithdraw}
         image={total}
         alt="Total"
         className="secundaryBackground"

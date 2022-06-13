@@ -18,12 +18,11 @@ export const ModalComponent = (props: IModalProps) => {
     amount: 0,
   });
   Modal.setAppElement("#root"); //Fix "Warning: react-modal: App element is not defined"
-  console.log(transactions);
   const handleCreateTransaction = async (e: React.FormEvent) => {
     e.preventDefault();
     const rawData = {
       title: form.title,
-      typeofTransaction: howIsSelected,
+      type: howIsSelected,
       category: form.category,
       amount: Number(form.amount),
     };
