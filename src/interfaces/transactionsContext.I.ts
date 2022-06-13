@@ -1,6 +1,6 @@
 import { ITransactionContent } from "./transactionContent.I";
 
 export interface ITransactionsContext {
-  transactions?: ITransactionContent[];
-  setTransactions: React.Dispatch<React.SetStateAction<never[]>>;
+  transactions: Omit<ITransactionContent, "id" | "createdAt">[];
+  setTransactions: React.Dispatch<React.SetStateAction<any>>;
 }
