@@ -1,17 +1,10 @@
 import React from "react";
-import { ITransactionContent } from "../../interfaces/transactionContent.I";
-import { api } from "../../services";
+import { SharedState } from "../../context/transactionContext";
 import { Container } from "./styled";
 
 export const Transactions = () => {
-  const [transactions, setTransactions] = React.useState<ITransactionContent[]>(
-    []
-  );
-  React.useEffect(() => {
-    api
-      .get("transactions")
-      .then((res) => setTransactions(res.data.transactions));
-  }, []);
+  const { transactions } = SharedState();
+
   return (
     <Container>
       <table>

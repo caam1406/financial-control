@@ -3,8 +3,10 @@ import { SummaryComponent } from "./component";
 import income from "../../assets/income.svg";
 import outcome from "../../assets/outcome.svg";
 import total from "../../assets/total.svg";
+import { SharedState } from "../../context/transactionContext";
 
 export const Summary = () => {
+  const { transactions } = SharedState();
   return (
     <Container>
       <SummaryComponent
