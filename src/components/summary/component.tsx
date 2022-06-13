@@ -7,7 +7,12 @@ export const SummaryComponent = (props: ISummary) => {
         <p>{props.title}</p>
         <img src={props.image} alt={props.alt} />
       </header>
-      <strong>R$: {props.value}</strong>
+      <strong>
+        {props.title === "Income" ? "R$" : "-R$"}
+        {` `}
+        {props.value}
+      </strong>
     </div>
   );
 };
+// {props.value}
